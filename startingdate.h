@@ -1,3 +1,13 @@
+
+#ifndef start_H
+#define start_H
+
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+
+
 void Start(int i=0){
     if (i==0){
         int start[]= {0,1};
