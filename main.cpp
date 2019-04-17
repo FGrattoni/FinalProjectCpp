@@ -2,6 +2,8 @@
 //#include <fstring>
 #include <cmath>
 
+#include "MissingElement.h"
+
 /*
 Final project: Loan Payment Schedule
 Date 16th April 2019
@@ -42,10 +44,11 @@ void Frequency(int i=0) {
 }
 
 
-// 3.1 Exercises
-// Program answering the question whether the number is prime or not
 int main()
 {
     Frequency();
+    // need for ask wether Fixed installments
+    // if fixed installments
+    MissingElementFI();
     return 0;
 }
