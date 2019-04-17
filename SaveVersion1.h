@@ -24,7 +24,8 @@ CSV Output file
 
 
 
-void SaveVersion1 (){
+void SaveVersion1()
+{
     char sep=";";
 
     ofstream csvFile;
@@ -33,7 +34,12 @@ void SaveVersion1 (){
 
     // create some variables for demonstration
     int i;
-    /*int pvb, p, r, pmt, pve, n; pvb=opening balance beginning, p=principal, r= interest rate, pmt= instalment, pve=closing balance
+    /*int pvb, p, r, pmt, pve, n; 
+	pvb=opening balance beginning, 
+	p=principal, 
+	r= interest rate, 
+	pmt= instalment, 
+	pve=closing balance
     Variables are available as arrays from exercise before.... or created in another function
      */
 
@@ -44,7 +50,7 @@ void SaveVersion1 (){
 
     for (int  i= 0; i <n; i++) //smaller than n is fine because array starts at 0
     {
-        csvFile << start[0] << "/" << start[1] << sep << pvb[i]  << sep << p[i] << sep << r[i] << sep << interest[i] << sep << pmt[i] << sep <<pve[i]"\n";
+        csvFile << start[0] << "/" << start[1] << sep << pvb[i]  << sep << p[i] << sep << r[i] << sep << interest[i] << sep << pmt[i] << sep << pve[i] <<"\n";
 
         //My idea for creating a variable of the date
         if (f==1){
@@ -64,13 +70,13 @@ void SaveVersion1 (){
         }else if(f==4){
             start[0]++;
             if (start[0]>12){
-                start[0] - = 12;
+                start[0] -= 12;
                 start[1]++;
             }
         }else{
                 cout << "It occurs a problem with the date";
-            }
-    };
+        }
+    }
     csvFile.close();
     cout<<"The csv-file was successfully saved\n";
 }
@@ -93,11 +99,11 @@ void SaveVersion2 (){
     csvFile << "n" << sep << "PV(i-1)" << sep << "P" << sep << "M" << sep <<  "B" << sep << "r"<< sep << "Int" << sep << "PMT" << sep <<"PV(i)\n";
     for (int  i= 0; i <n; i++) //smaller than n is fine because array starts at 0
     {
-        csvFile << start[0] <<"/"<< start[1] << sep << pvb[i] << sep << p[i] << sep << m[i] << sep <<  b[i] << sep << r[i] << sep << interest[i]<< sep << pmt[i] << sep << pv[i] \n";
+        csvFile << start[0] <<"/"<< start[1] << sep << pvb[i] << sep << p[i] << sep << m[i] << sep <<  b[i] << sep << r[i] << sep << interest[i]<< sep << pmt[i] << sep << pv[i] << "\n";
 
         if (f==1){
             start[1]+=1;
-        }else if(f==2) {
+        } else if(f==2) {
             start[0] += 6;
             if (start[0] > 12) {
                 start[0] -= 12;
@@ -112,10 +118,10 @@ void SaveVersion2 (){
         }else if(f==4){
             start[0]++;
             if (start[0]>12) {
-                start[0] - = 12;
+                start[0] -= 12;
                 start[1]++;
             }
-        }else{
+        } else {
             cout << "There exists a problem with the variable: date" << ;
         }
 
