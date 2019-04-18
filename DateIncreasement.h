@@ -1,12 +1,12 @@
-#ifndef Dateincreasement_H
-#define Dateincreasement_H
+#ifndef DateIncreasement_H
+#define DateIncreasement_H
 
 #include <iostream>
 #include <cmath>
 
 using namespace std;
 
-void Dateincreasement (int start[], int f){
+void DateIncreasement (int start[], int f){
     if (f==1){
         start[1]+=1;
     } else if(f==2) {
