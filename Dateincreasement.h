@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 void Dateincreasement (int start[], int f){
     if (f==1){
         start[1]+=1;
