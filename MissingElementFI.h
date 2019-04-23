@@ -55,10 +55,11 @@ double InterestComputation(double PV, double PMT, int n)
 }
 
 
-void MissingElementFI(int i = 0) 
+double * MissingElementFI(int i = 0) 
 {
     double PMT, PV, n, r;
     int MissingElement;
+    double* data = new double[4];
     
     if (i=0) 
 	{
@@ -66,7 +67,7 @@ void MissingElementFI(int i = 0)
     	cout << "In order to do so, which one of the four component you don't want to insert manually?" << endl;	
 	} else
 	{
-		cout << "These are the possible inputs. Which one would you like not to insert?" << endl;
+		cout << "These are the possible inputs. Which one would you like NOT to insert?" << endl;
 	}
 	
     cout << " 1 = PV (Opening balance) \n 2 = PMT (Fixed installment amount) \n 3 = n (Number of payments) \n 4 = r (Fixed interest rate)\n";
@@ -127,7 +128,14 @@ void MissingElementFI(int i = 0)
         cout << "Please insert a valid input.\n\n";
         MissingElementFI(i = 1);
     }
-
+    
+    data[0] = PV;
+	data[1] = PMT;
+    data[2] = n;
+    data[3] = r;
+	
+	return data;
+    
 }
 
 
