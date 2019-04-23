@@ -7,6 +7,11 @@
 #include<string>
 
 #include "MissingElementFI.h"
+//#include "SaveVersion1.h"
+#include "frequency.h"
+
+
+
 
 using namespace std;
 
@@ -15,14 +20,15 @@ using namespace std;
 int main()
 {
 	int n;
+//	n = Frequency();
 	double PV, PMT, r;
 	double temp;
-	
+		
 	PV = 10000;
 	PMT = 2309.75;
 	n = 5;
 	r = 0.05;
-	
+
 	temp = PVComputation(PMT, n, r);
 	cout << "Computed PV is: " << temp << ", expected was: " << PV << endl;
 	
@@ -35,6 +41,8 @@ int main()
 	temp = InterestComputation(PV, PMT, n);
 	cout << "Computed interest is: " << temp << ", expected was: " << r << endl;
 	
-	MissingElementFI();
+	
+	double* data = MissingElementFI();
+	cout << "TEST\n" << "PV: " << data[0] << "\nPMT: " << data[1] << "\nn: " << data[2] << "\nr: " << data[3];
 
 }
