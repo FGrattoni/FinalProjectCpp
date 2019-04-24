@@ -29,18 +29,6 @@ void ScheduleValues(int R,int PMT,int repayments){
         }to check arrays 
         */
     }
-
-int main(){
-    //int R;
-    //int PMT;
-    int repayments=5; // needs to be calculated as a formel
-    int pvb[repayments];
-    pvb[0]=5000; //given value PV beginning
-    //repayments is the number of times an part of the loan is repayed ;
-    ScheduleValues(0.03, 2000, 5);
     
-    return 0;
-}
-
 
 
