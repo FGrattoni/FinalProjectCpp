@@ -1,3 +1,6 @@
+#ifndef ScheduleValues_H
+#define ScheduleValues_H
+
 #include <iostream>
 #include <cmath>
 
