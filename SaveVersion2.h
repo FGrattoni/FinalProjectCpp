@@ -6,6 +6,7 @@
 #include <string>
 #include <cmath>
 
+#include "DateIncreasement.h"
 
 using namespace std;
 
@@ -38,3 +39,5 @@ void SaveVersion2 (int start[],int n,int pvb[], int p[], int m [], int b[], int 
     csvFile.close();
     cout<<"The csv-file Version 2 was successfully saved\n";
 }
+
+#endif
