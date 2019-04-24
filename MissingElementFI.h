@@ -102,7 +102,7 @@ double * MissingElementFI(int i = 0, int f = 1)
         cout << "Interest rate for every installment is: " << r << "." << endl;
 		
 		PMT = PMTComputation(PV, n, r);
-		cout << "\nThe PMT (fixed installment amount) is: " << PMT;
+		cout << "\nThe PMT (fixed installment amount) is: " << PMT << "." << endl;
 		
     } else if ( MissingElement == 3 ) {
         cout << "You choose not to insert n, the number of payments.\n";
@@ -116,7 +116,7 @@ double * MissingElementFI(int i = 0, int f = 1)
         cout << "Interest rate for every installment is: " << r << "." << endl;
 		
 		n = NComputation(PV, PMT, r);
-		cout << "\nThe n (number of payments) is: " << n;
+		cout << "\nThe n (number of payments) is: " << n << "." << endl;
 		
     } else if ( MissingElement == 4 ) {
         cout << "You choose not to insert r, the fixed interest rate.\n";
@@ -129,6 +129,7 @@ double * MissingElementFI(int i = 0, int f = 1)
         
         r = InterestComputation(PV, PMT, n);
         cout << "\nThe r (fixed interest rate for every payment) is: " << r;
+        cout << "\nThe annual fixed interest rate would be: " << r*f << endl;
         
     } else {
         cout << "Please insert a valid input.\n\n";
