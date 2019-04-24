@@ -55,7 +55,7 @@ double InterestComputation(double PV, double PMT, int n)
 }
 
 
-double * MissingElementFI(int i = 0) 
+double * MissingElementFI(int i = 0, int f = 1) 
 {
     double PMT, PV, n, r;
     int MissingElement;
@@ -70,7 +70,7 @@ double * MissingElementFI(int i = 0)
 		cout << "These are the possible inputs. Which one would you like NOT to insert?" << endl;
 	}
 	
-    cout << " 1 = PV (Opening balance) \n 2 = PMT (Fixed installment amount) \n 3 = n (Number of payments) \n 4 = r (Fixed interest rate)\n";
+    cout << " 1 = PV (Opening balance) \n 2 = PMT (Fixed installment amount) \n 3 = n (Number of payments) \n 4 = r (Fixed annual interest rate)\n";
     cout << "Insert your choice by the provided numbers: \n";
     cin >> MissingElement;
 
@@ -81,8 +81,10 @@ double * MissingElementFI(int i = 0)
         cin >> PMT;
         cout << "Please insert n.\n";
         cin >> n;
-        cout << "Please insert r.\n";
+        cout << "Please insert annual r.\n";
         cin >> r;
+        r = r / f;
+        cout << "Interest rate for every installment is: " << r << "." << endl;
 		
 		PV = PVComputation(PMT, n, r);
 		cout << "\nThe PV (opening balance) is: " << PV;
@@ -94,8 +96,10 @@ double * MissingElementFI(int i = 0)
         cin >> PV;
         cout << "Please insert n.\n";
         cin >> n;
-        cout << "Please insert r.\n";
+        cout << "Please insert annual r.\n";
         cin >> r;
+        r = r / f;
+        cout << "Interest rate for every installment is: " << r << "." << endl;
 		
 		PMT = PMTComputation(PV, n, r);
 		cout << "\nThe PMT (fixed installment amount) is: " << PMT;
@@ -106,8 +110,10 @@ double * MissingElementFI(int i = 0)
         cin >> PV;
         cout << "Please insert PMT.\n";
         cin >> PMT;
-        cout << "Please insert r.\n";
+        cout << "Please insert annual r.\n";
         cin >> r;
+        r = r / f;
+        cout << "Interest rate for every installment is: " << r << "." << endl;
 		
 		n = NComputation(PV, PMT, r);
 		cout << "\nThe n (number of payments) is: " << n;
@@ -122,11 +128,11 @@ double * MissingElementFI(int i = 0)
         cin >> n;
         
         r = InterestComputation(PV, PMT, n);
-        cout << "\nThe r (fixed interest rate) is: " << r;
+        cout << "\nThe r (fixed interest rate for every payment) is: " << r;
         
     } else {
         cout << "Please insert a valid input.\n\n";
-        MissingElementFI(i = 1);
+        MissingElementFI(i = 1, f);
     }
     
     data[0] = PV;
