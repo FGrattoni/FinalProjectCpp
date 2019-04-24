@@ -1,4 +1,3 @@
-
 #ifndef start_H
 #define start_H
 
@@ -8,9 +7,9 @@
 using namespace std;
 
 
-void Start(int i=0){
+int * Start(int i=0){
+	int* start = new int[2];
     if (i==0){
-        int start[]= {0,1};
         cout << "Hello,\n";
     }
     cout<< "When would you like to start your repayment schedule? Please enter: month[_ _]\n";
@@ -27,11 +26,15 @@ void Start(int i=0){
         cout<< "Your input is not valid. Please select a date between 2019 & 2039 : year[_ _ _ _]\n";
         cin >> start [0];
         }
-    if (start[0]<4 && start [1]=2019)
+    if (start[0]<4 && start [1]==2019)
         {
         cout<< "Your input is not valid. Please select a date in the future\n";
         cin >> start [0];
-        Start(i=1)
+        Start(i=1);
         }
-    cout << "The selected starting date is" << start[];
+    cout << "The selected starting date is " << start[0] << "/" << start[1];
+    
+    return start;
 }
+
+#endif
