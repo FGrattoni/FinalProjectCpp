@@ -24,8 +24,10 @@ int Frequency(int i=0) {
         cout<<"You selected semi-annual repayment rates\n";
     } else if(f == 3) {
         cout<<"You selected quarterly repayment rates\n";
+        f = 4;
     } else if(f == 4) {
         cout<<"You selected monthly repayment rates\n";
+        f = 12;
     } else {
         cout<<"Please insert a valid input.\n\n";
         Frequency(i = 1);
