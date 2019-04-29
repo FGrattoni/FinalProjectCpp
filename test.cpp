@@ -9,6 +9,7 @@
 #include "MissingElementFI.h"
 //#include "SaveVersion1.h"
 #include "frequency.h"
+#include "NormalVariable.h"
 
 
 
@@ -23,12 +24,19 @@ int main()
 //	n = Frequency();
 	double PV, PMT, r;
 	double temp;
-		
+
+	
 	PV = 10000;
 	PMT = 2309.75;
 	n = 5;
 	r = 0.05;
-
+	
+	double somma = 0;
+	n = 100;
+	
+	cout << "Normally distributed random variable with mean 3 and std 0.5: " << NormalVar(3, 0.5) << endl;
+	
+	
 	temp = PVComputation(PMT, n, r);
 	cout << "Computed PV is: " << temp << ", expected was: " << PV << endl;
 	
@@ -44,5 +52,6 @@ int main()
 	
 	double* data = MissingElementFI();
 	cout << "TEST\n" << "PV: " << data[0] << "\nPMT: " << data[1] << "\nn: " << data[2] << "\nr: " << data[3];
+
 
 }
