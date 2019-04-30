@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <fstring>
 #include <cmath>
 
 
@@ -15,6 +14,7 @@ using std::setw;
 #include "SaveVersion2.h"
 #include "startingdate.h"
 #include "DateIncreasement.h"
+#include "Floatingrate.h"
 
 /*
 Final project: Loan Payment Schedule
@@ -63,11 +63,41 @@ int main()
 	}
 	
 
-
 	// THIS PART OF THE CODE IS JUST TO SEE THE TEMPORARY OUTPUT.
 	cout << "\npvb" << setw(13) << "p" << setw(13) << "Interest" << setw(13) << "pmt" << setw(13) << "pve"<<  endl;                     
 	for ( int i = 0; i<n; i++ )
 		cout << setw(7)<< pvb[i] << setw(13) << p[i] << setw(13) << interest[i] << setw(13) << pmt << setw(13) << pve[i] << endl;
+    
+    // FIXED PRINCIPAL CASE
+    double* data = Floatingrate(0, f);
+    
+    double m=data[3];
+    int n=data[2];
+    double p=data[1];
+    double pv=data[0];
 
+    //Creating Arrays for the Schedule two output
+    double pvb[n];
+    pvb[0] = data[0];
+    double p[n];
+    double interest[n];
+    double pve[n];
+    double pmt[n];
+    double m[n];
+    double b[n];
+    double pve[n];
+    for(int i=0 ; i<n ; i++)
+    {
+        if (i!=0)
+        pvb[i] = pve[i-1];
+        p[i]=data[1];
+        b[i]=NormalVar(z1);
+        interest[i] = rounf(b[i]+m[i]) / 100;
+        pmt[i] =p[i] - interest[i];
+        pve[i] = pvb[i] - p[i];
+    }
+    
+    
     return 0;
 }
+
