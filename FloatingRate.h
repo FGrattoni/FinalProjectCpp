@@ -33,7 +33,7 @@ double * Floatingrate(int i = 0, int f = 1)
         cout << "Please insert a valid input.\n\n";
         Floatingrate(i = 1, f);
     }
-    cout << "Please enter the fixed margin in decimals (e.g. 1 % = 1): \n "<< endl;
+    cout << "Please enter the fixed margin in percentage (e.g. 1 % = 1): \n "<< endl;
     cin >> m;
     
     cout << "Please enter the number of times a reinstallment is demanded: \n "<< endl;
