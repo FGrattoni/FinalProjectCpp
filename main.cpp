@@ -46,7 +46,8 @@ int main()
 
 	int n = data[2];
 	double r = data[3];
-	double pmt = data[1];
+	double pmt[n];
+	pmt[0] = data[1];
 	
 	double pvb[n];
 	pvb[0] = data[0];
@@ -58,16 +59,25 @@ int main()
 		if (i!=0)
 		pvb[i] = pve[i-1];
 		interest[i] = roundf(pvb[i] * r * 100) / 100;
-		p[i] = pmt - interest[i];
+		p[i] = pmt[0] - interest[i];
 		pve[i] = pvb[i] - p[i];
+		pmt[i] = pmt[0];
 	}
 	
+
 
 	// THIS PART OF THE CODE IS JUST TO SEE THE TEMPORARY OUTPUT.
 	cout << "\npvb" << setw(13) << "p" << setw(13) << "Interest" << setw(13) << "pmt" << setw(13) << "pve"<<  endl;                     
 	for ( int i = 0; i<n; i++ )
 		cout << setw(7)<< pvb[i] << setw(13) << p[i] << setw(13) << interest[i] << setw(13) << pmt << setw(13) << pve[i] << endl;
     
+	int temp[2];
+	temp[0] = 01;
+	temp[1] = 2020;
+	SaveVersion1(temp, n, pvb, p, r, interest, pmt, pve, f);
+    
+
+
     // FIXED PRINCIPAL CASE
     double* data = Floatingrate(0, f);
     
@@ -96,8 +106,7 @@ int main()
         pmt[i] =p[i] - interest[i];
         pve[i] = pvb[i] - p[i];
     }
-    
+
     
     return 0;
 }
-
