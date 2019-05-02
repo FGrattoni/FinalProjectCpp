@@ -78,14 +78,13 @@ int main()
     
 
 
-    // FIXED PRINCIPAL CASE
+     // FIXED PRINCIPAL CASE
     double* data = Floatingrate(0, f);
     
     double m=data[3];
     int n=data[2];
     double p=data[1];
-    double pv=data[0];
-
+    
     //Creating Arrays for the Schedule two output
     double pvb[n];
     pvb[0] = data[0];
@@ -96,17 +95,43 @@ int main()
     double m[n];
     double b[n];
     double pve[n];
-    for(int i=0 ; i<n ; i++)
-    {
-        if (i!=0)
-        pvb[i] = pve[i-1];
-        p[i]=data[1];
-        b[i]=NormalVar(z1);
-        interest[i] = rounf(b[i]+m[i]) / 100;
-        pmt[i] =p[i] - interest[i];
-        pve[i] = pvb[i] - p[i];
-    }
-
+    bool fixedinterest;
     
-    return 0;
-}
+    
+    cout << "You would prefer a fixed interest rate or a floating one?" << endl;
+    cout << "Select by entering the number corresponding to your choice:" << endl;
+    cout << "[0] floating one;" << endl;
+    cout << "[1] fixed interest rate." << endl;
+    cin>>fixedinterest;
+    
+    if(fixedinterest){
+        cout<<"What should be the fixed interest rate? Please enter numbers in percentage (e.g. 1=1%\n"<<endl;
+        cin>>r;
+        r/=100;
+        cout<<"Your fixed interest rate is "<< r << endl;
+        
+        for(int i=0 ; i<n ; i++){
+            if (i!=0)
+                pvb[i] = pve[i-1];
+            p[i]=data[1];
+            interest[i] = roundf(pvb[i] * r * 100) / 100;
+            pmt[i] = p[i] + interest[i];
+            pve[i] = pvb[i] - p[i];
+        }
+        
+        
+        else{
+        if (for(int i=0 ; i<n ; i++)
+            {
+                if (i!=0)
+                    pvb[i] = pve[i-1];
+                p[i]=data[1];
+                b[i]=NormalVar(mean=3,std=0.5);
+                interest[i] = rounf(b[i]+m[i]) / 100;
+                pmt[i] =p[i] + interest[i];
+                pve[i] = pvb[i] - p[i];
+                }}
+        
+        return 0;
+        }
+
