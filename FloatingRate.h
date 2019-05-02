@@ -23,22 +23,14 @@ double * Floatingrate(int i = 0, int f = 1)
     cout << "In order to do so, what is the total of the loan taken? (in Euros) \n " << endl;
     cin >> PV;
 
-    cout << "Please enter the fixed principal (in Euros): \n "<< endl;
-    cin >> P;
-
-    if(PV%P==0){
-        data[0] = PV;
-        data[1] = P;
-    }else{
-        cout << "Please insert a valid input.\n\n";
-        Floatingrate(i = 1, f);
-    }
+  
     cout << "Please enter the fixed margin in percentage (e.g. 1 % = 1): \n "<< endl;
     cin >> m;
     
     cout << "Please enter the number of times a reinstallment is demanded: \n "<< endl;
     cin >> n;
     
+    P=PV/n;
     
     data[0] = PV;
     data[1] = P;
