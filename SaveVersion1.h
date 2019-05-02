@@ -14,11 +14,24 @@ using namespace std;
 Date 17th April 2019
 CSV Output file*/
 
-void SaveVersion1(int start[],int n,int pvb[], int p[], int r[], int interest[], int pmt[], int pve[], int f)
+void SaveVersion1(int start[], int n, double pvb[], double p[], double r, double interest[], double pmt[], double pve[], int f)
 {
     char sep=';';
     int i;
 
+
+	// Normalize the data to two decimal numbers:
+	for(int i = 0; i<n ; i++)
+	{
+		pvb[i] = roundf(pvb[i] * 100) / 100;
+		p[i] = roundf(p[i] * 100) / 100;
+		r = roundf(r * 100) / 100;
+		interest[i] = roundf(interest[i] * 100) / 100;
+		pmt[i] = roundf(pmt[i] * 100) / 100;
+		pve[i] = roundf(pve[i] * 100) / 100;
+	}
+	
+	
     ofstream csvFile;
     ofstream outputFile;
     csvFile.open ("loanschedule1.csv");
@@ -29,9 +42,9 @@ void SaveVersion1(int start[],int n,int pvb[], int p[], int r[], int interest[],
 
     //Creating a loop that inserts the data
 
-    for (int  i= 0; i <n; i++) //smaller than n is fine because array starts at 0
+    for (int i= 0; i <n; i++) //smaller than n is fine because array starts at 0
     {
-        csvFile << start[0] << "/" << start[1] << sep << pvb[i]  << sep << p[i] << sep << r[i] << sep << interest[i] << sep << pmt[i] << sep << pve[i] <<"\n";
+        csvFile << start[0] << "/" << start[1] << sep << pvb[i]  << sep << p[i] << sep << r << sep << interest[i] << sep << pmt[i] << sep << pve[i] <<"\n";
         DateIncreasement(start, f);
 
     }
