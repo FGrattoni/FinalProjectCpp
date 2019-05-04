@@ -45,7 +45,7 @@ double NComputation(double PV, double PMT, double r)
 			cout << "\nWarning! \nThe n computed is not a whole number. Therefore, since after " << roundf(tempN) << " periods what is left to pay is a small amount we included it in the last payment.\n";
 		}
 		
-		n = roundf(tempN);
+		n = tempN;
 	}
 	else n = tempN;
 	
