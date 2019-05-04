@@ -9,7 +9,6 @@ using std::setw;
 
 #include "MissingElementFI.h"
 #include "frequency.h"
-#include "output.h"
 #include "SaveVersion1.h"
 #include "SaveVersion2.h"
 #include "startingdate.h"
@@ -69,7 +68,7 @@ int main()
 	// THIS PART OF THE CODE IS JUST TO SEE THE TEMPORARY OUTPUT.
 	cout << "\npvb" << setw(13) << "p" << setw(13) << "Interest" << setw(13) << "pmt" << setw(13) << "pve"<<  endl;                     
 	for ( int i = 0; i<n; i++ )
-		cout << setw(7)<< pvb[i] << setw(13) << p[i] << setw(13) << interest[i] << setw(13) << pmt << setw(13) << pve[i] << endl;
+		cout << setw(7)<< pvb[i] << setw(13) << p[i] << setw(13) << interest[i] << setw(13) << pmt[0] << setw(13) << pve[i] << endl;
     
 	int temp[2];
 	temp[0] = 01;
@@ -77,7 +76,7 @@ int main()
 	SaveVersion1(temp, n, pvb, p, r, interest, pmt, pve, f);
     
 
-
+/*
      // FIXED PRINCIPAL CASE
     double* data = Floatingrate(0, f);
     
@@ -131,7 +130,9 @@ int main()
                 pmt[i] =p[i] + interest[i];
                 pve[i] = pvb[i] - p[i];
                 }}
-        
+
+*/
+
+
         return 0;
         }
-
