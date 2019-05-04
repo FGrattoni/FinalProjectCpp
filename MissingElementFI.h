@@ -28,7 +28,27 @@ double PMTComputation(double PV, int n, double r)
 double NComputation(double PV, double PMT, double r)
 {
 	int n;
-	n = log(PMT/(PMT-r*PV))/log(1+r);
+	double tempN;
+	tempN = log(PMT/(PMT-r*PV))/log(1+r);
+	
+	tempN = roundf(tempN * 10000) / 10000;
+	
+	if ( fmod(tempN, 1) > 0.01 )
+	{
+		if ( fmod(tempN, 1) > 0.1 )
+		{
+			cout << "\nWarning! \nThe n computed is not a whole number. Therefore, we added a period more, which will have a smaller installment in order to extinguish the loan's debt.\n";
+			tempN++;
+		}
+		else 
+		{
+			cout << "\nWarning! \nThe n computed is not a whole number. Therefore, since after " << roundf(tempN) << " periods what is left to pay is a small amount we included it in the last payment.\n";
+		}
+		
+		n = roundf(tempN);
+	}
+	else n = tempN;
+	
 	return n;
 }
 
