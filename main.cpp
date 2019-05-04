@@ -53,7 +53,7 @@ int main()
 	double p[n];
 	double interest[n];
 	double pve[n];
-	for(int i=0 ; i<n ; i++)
+	for(int i=0 ; i<n-1 ; i++)
 	{
 		if (i!=0)
 		pvb[i] = pve[i-1];
@@ -62,13 +62,19 @@ int main()
 		pve[i] = pvb[i] - p[i];
 		pmt[i] = pmt[0];
 	}
+	// taking care of the LAST LINE
+	pvb[n-1] = pve[n-2];
+	interest[n-1] = roundf(pvb[n-1] * r * 100) / 100;
+	p[n-1] = pvb[n-1];
+	pve[n-1] = pvb[n-1] - p[n-1];
+	pmt[n-1] = pvb[n-1] + interest[n-1];
 	
 
 
 	// THIS PART OF THE CODE IS JUST TO SEE THE TEMPORARY OUTPUT.
 	cout << "\npvb" << setw(13) << "p" << setw(13) << "Interest" << setw(13) << "pmt" << setw(13) << "pve"<<  endl;                     
 	for ( int i = 0; i<n; i++ )
-		cout << setw(7)<< pvb[i] << setw(13) << p[i] << setw(13) << interest[i] << setw(13) << pmt[0] << setw(13) << pve[i] << endl;
+		cout << setw(7)<< pvb[i] << setw(13) << p[i] << setw(13) << interest[i] << setw(13) << pmt[i] << setw(13) << pve[i] << endl;
     
 	int temp[2];
 	temp[0] = 01;
