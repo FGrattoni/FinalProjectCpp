@@ -14,6 +14,7 @@ using std::setw;
 #include "startingdate.h"
 #include "DateIncreasement.h"
 #include "Floatingrate.h"
+#include "InputValidation.h"
 
 /*
 Final project: Loan Payment Schedule
