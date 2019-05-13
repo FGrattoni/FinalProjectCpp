@@ -6,7 +6,7 @@
 #include <iomanip>
 using std::setw;
 
-
+#include "InputValidation.h"
 #include "MissingElementFI.h"
 #include "frequency.h"
 #include "SaveVersion1.h"
@@ -14,12 +14,11 @@ using std::setw;
 #include "startingdate.h"
 #include "DateIncreasement.h"
 #include "Floatingrate.h"
-#include "InputValidation.h"
 
 /*
 Final project: Loan Payment Schedule
 Date 16th April 2019
-Names Giada, Fabio, Lillian 
+Names Giada, Fabio, Lillian
 */
 
 
@@ -30,22 +29,26 @@ int main()
     cout << "HELLO. THIS PART OF THE CODE IS FOR TESTING PURPOSES ONLY.\nPLEASE INSERT AN INTEGER BETWEEN 1 and 4: ";
     int testVar;
     testVar = ChoiceOption(1, 4);
-    cout << You selected: " << testVar << "\nEND OF TEST\n\n";
-	
+    cout << "You selected: " << testVar << "\nEND OF TEST\n\n";
+
+    cout << "Welcome in the program to compute loan's repayment schedule." << endl;
+    int* start = Start(0);
+    cout << "The selected starting date is: " << start[0] << "/" << start[1] << "\n\n";
+
     int f = Frequency();
-    
-    cout << "You would prefer a fixed installment or a fixed principal?" << endl;
-    cout << "Select by entering the number corresponding to your choice:" << endl;
+
+    cout << "\nYou would prefer a fixed installment or a fixed principal?" << endl;
+    cout << "Please, select by entering the number corresponding to your choice:" << endl;
     cout << "[1] fixed installments;" << endl;
     cout << "[2] fixed principal." << endl;
-    
+
     cout << "\n.. temporary .. " << endl;
 	cout << "   There is no choice for the moment. The function is missing. \n\n";
-	
-	
+
+
 	// need for ask wether Fixed installments
     // if fixed installments
-    
+
 	// FIXED INSTALLMENTs CASE
 	double* data = MissingElementFI(0, f);
 
@@ -53,7 +56,7 @@ int main()
 	double r = data[3];
 	double pmt[n];
 	pmt[0] = data[1];
-	
+
 	double pvb[n];
 	pvb[0] = data[0];
 	double p[n];
@@ -74,28 +77,28 @@ int main()
 	p[n-1] = pvb[n-1];
 	pve[n-1] = pvb[n-1] - p[n-1];
 	pmt[n-1] = pvb[n-1] + interest[n-1];
-	
+
 
 
 	// THIS PART OF THE CODE IS JUST TO SEE THE TEMPORARY OUTPUT.
-	cout << "\npvb" << setw(13) << "p" << setw(13) << "Interest" << setw(13) << "pmt" << setw(13) << "pve"<<  endl;                     
+	cout << "\npvb" << setw(13) << "p" << setw(13) << "Interest" << setw(13) << "pmt" << setw(13) << "pve"<<  endl;
 	for ( int i = 0; i<n; i++ )
 		cout << setw(7)<< pvb[i] << setw(13) << p[i] << setw(13) << interest[i] << setw(13) << pmt[i] << setw(13) << pve[i] << endl;
-    
+
 	int temp[2];
 	temp[0] = 01;
 	temp[1] = 2020;
 	SaveVersion1(temp, n, pvb, p, r, interest, pmt, pve, f);
-    
+
 
 /*
      // FIXED PRINCIPAL CASE
     double* data = Floatingrate(0, f);
-    
+
     double m=data[3];
     int n=data[2];
     double p=data[1];
-    
+
     //Creating Arrays for the Schedule two output
     double pvb[n];
     pvb[0] = data[0];
@@ -107,20 +110,20 @@ int main()
     double b[n];
     double pve[n];
     bool fixedinterest;
-    
-    
+
+
     cout << "You would prefer a fixed interest rate or a floating one?" << endl;
     cout << "Select by entering the number corresponding to your choice:" << endl;
     cout << "[0] floating one;" << endl;
     cout << "[1] fixed interest rate." << endl;
     cin>>fixedinterest;
-    
+
     if(fixedinterest){
         cout<<"What should be the fixed interest rate? Please enter numbers in percentage (e.g. 1=1%\n"<<endl;
         cin>>r;
         r/=100;
         cout<<"Your fixed interest rate is "<< r << endl;
-        
+
         for(int i=0 ; i<n ; i++){
             if (i!=0)
                 pvb[i] = pve[i-1];
@@ -129,8 +132,8 @@ int main()
             pmt[i] = p[i] + interest[i];
             pve[i] = pvb[i] - p[i];
         }
-        
-        
+
+
         else{
         if (for(int i=0 ; i<n ; i++)
             {
