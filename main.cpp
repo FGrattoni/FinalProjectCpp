@@ -27,6 +27,11 @@ using namespace std;
 
 int main()
 {
+    cout << "HELLO. THIS PART OF THE CODE IS FOR TESTING PURPOSES ONLY.\nPLEASE INSERT AN INTEGER BETWEEN 1 and 4: ";
+    int testVar;
+    testVar = ChoiceOption(1, 4);
+    cout << You selected: " << testVar << "\nEND OF TEST\n\n";
+	
     int f = Frequency();
     
     cout << "You would prefer a fixed installment or a fixed principal?" << endl;
