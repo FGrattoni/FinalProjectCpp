@@ -2,38 +2,31 @@
 #define start_H
 
 #include<iostream>
-#include<cmath>
+#include <ctime>
+#include "InputValidation.h"
 
 using namespace std;
 
+int * Start(int i = 0)
+{
+    time_t t = time(NULL);
+	tm* timePtr = localtime(&t);
+    int currMonth = timePtr->tm_mon + 1;
+    int currYear = timePtr->tm_year + 1900;
 
-int * Start(int i=0){
 	int* start = new int[2];
-    if (i==0){
-        cout << "Hello,\n";
-    }
-    cout<< "When would you like to start your repayment schedule? Please enter: month[_ _]\n";
-    cin >> start[0];
-    cout<< "Please enter four digits: year[_ _ _ _]\n";
-    cin >> start[1];
-    if (start[0]>12 || start [0]<1)
-        {
-            cout<< "Your input is not valid. Please enter a number of (1,2,3,4,5,6,7,8,9,10,11,12): month[_ _]\n";
-            cin >> start [0];
-        }
-    if (start[1]>2039 || start [1]<2019)
-        {
-        cout<< "Your input is not valid. Please select a date between 2019 & 2039 : year[_ _ _ _]\n";
-        cin >> start [0];
-        }
-    if (start[0]<4 && start [1]==2019)
-        {
-        cout<< "Your input is not valid. Please select a date in the future\n";
-        cin >> start [0];
+	if (i == 0) cout << "When would you like to start your repayment schedule? \n";
+    cout<< "Please, enter the starting month[_ _]: ";
+    start[0] = ChoiceOption(1, 12);
+    cout<< "Please, enter the starting year[_ _ _ _]: ";
+    start[1] = ChoiceOption(currYear, 2039);
+
+    if ( (start[0] < currMonth) && (start[1] == currYear) )
+    {
+        cout << "Your input is not valid. Please, enter a date in the future.\n";
         Start(i=1);
-        }
-    cout << "The selected starting date is " << start[0] << "/" << start[1];
-    
+    }
+
     return start;
 }
 
