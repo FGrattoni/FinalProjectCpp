@@ -30,9 +30,9 @@ double NComputation(double PV, double PMT, double r)
 	int n;
 	double tempN;
 	tempN = log(PMT/(PMT-r*PV))/log(1+r);
-	
+
 	tempN = roundf(tempN * 10000) / 10000;
-	
+
 	if ( fmod(tempN, 1) > 0.01 )
 	{
 		if ( fmod(tempN, 1) > 0.1 )
@@ -40,15 +40,15 @@ double NComputation(double PV, double PMT, double r)
 			cout << "\nWarning! \nThe n computed is not a whole number. Therefore, we added a period more, which will have a smaller installment in order to extinguish the loan's debt.\n";
 			tempN++;
 		}
-		else 
+		else
 		{
 			cout << "\nWarning! \nThe n computed is not a whole number. Therefore, since after " << roundf(tempN) << " periods what is left to pay is a small amount we included it in the last payment.\n";
 		}
-		
+
 		n = tempN;
 	}
 	else n = tempN;
-	
+
 	return n;
 }
 
@@ -57,13 +57,13 @@ double Function(double PV, double PMT, int n, double r)
 {
 	double temp;
 	temp = r * (PV/PMT) * ( 1 + (1) / (pow(1+r,n) - 1) ) -1 ;
-	return temp;	
+	return temp;
 }
 
-double InterestComputation(double PV, double PMT, int n) 
+double InterestComputation(double PV, double PMT, int n)
 {
 	double r = 0.001, rNext = 1, temp;
-	
+
 	while(abs(Function(PV, PMT, n, rNext)) > 0.000001)
 	{
 		temp = rNext;
@@ -75,94 +75,88 @@ double InterestComputation(double PV, double PMT, int n)
 }
 
 
-double * MissingElementFI(int i = 0, int f = 1) 
+double * MissingElementFI(int i = 0, int f = 1)
 {
     double PMT, PV, n, r;
     int MissingElement;
     double* data = new double[4];
-    
-    if (i=0) 
-	{
-    	cout << "This program calculates the missing element for the Fixed Installment case." << endl;
-    	cout << "In order to do so, which one of the four component you don't want to insert manually?" << endl;	
-	} else
-	{
-		cout << "These are the possible inputs. Which one would you like NOT to insert?" << endl;
-	}
-	
-    cout << " 1 = PV (Opening balance) \n 2 = PMT (Fixed installment amount) \n 3 = n (Number of payments) \n 4 = r (Fixed annual interest rate)\n";
-    cout << "Insert your choice by the provided numbers: \n";
-    cin >> MissingElement;
 
-    if ( MissingElement == 1 ) 
+    cout << "You chose the Fixed Installment case." << endl;
+    cout << "In order to compute the payment schedule, the program needs the initial amount of the loan, the fixed installment amount, the number of payments and the interest rate applied to the due amount." << endl;
+    cout << "Which one of the four component you don't want to insert manually?" << endl;
+    cout << "[1] PV (Opening balance) \n";
+    cout << "[2] PMT (Fixed installment amount)\n";
+    cout << "[3] n (Number of payments) \n";
+    cout << "[4] r (Fixed annual interest rate)\n";
+    cout << "Insert your choice by inserting one of the provided numbers: \n";
+    MissingElement = ChoiceOption(1,4);
+
+    if ( MissingElement == 1 )
 	{
-        cout << "You choose not to insert PV, the opening balance.\n";
-        cout << "Please insert PMT. \n";
-        cin >> PMT;
-        cout << "Please insert n.\n";
-        cin >> n;
-        cout << "Please insert annual r.\n";
-        cin >> r;
-        r = r / f;
-        cout << "Interest rate for every installment is: " << r << "." << endl;
-		
+        cout << "You chose not to insert PV, the opening balance.\n";
+        cout << "Please insert PMT, the installment amount: ";
+        PMT = RealInputLowerBound(0);
+        cout << "Please insert n, the number of payments: ";
+        n = ChoiceOption(1, 999);
+        cout << "Please insert annual r, the interest rate (given in %): ";
+        r = RealInputBounded(0, 100);
+        r = (r/100) / f;
+        cout << "Interest rate for every installment is: " << r*100 << "%." << endl;
+
 		PV = PVComputation(PMT, n, r);
 		cout << "\nThe PV (opening balance) is: " << PV;
-		
-    } else if ( MissingElement == 2 ) 
+
+    } else if ( MissingElement == 2 )
 	{
         cout << "You choose not to insert PMT, the fixed installment amount.\n";
-        cout << "Please insert PV. \n";
-        cin >> PV;
-        cout << "Please insert n.\n";
-        cin >> n;
-        cout << "Please insert annual r.\n";
-        cin >> r;
-        r = r / f;
-        cout << "Interest rate for every installment is: " << r << "." << endl;
-		
+        cout << "Please insert PV, the amount of the loan: ";
+        PV = RealInputLowerBound(0);
+        cout << "Please insert n, the number of payments: ";
+        n = ChoiceOption(0, 999);
+        cout << "Please insert annual r, the interest rate (given in %): ";
+        r = RealInputBounded(0, 100);
+        r = (r/100) / f;
+        cout << "Interest rate for every installment is: " << r*100 << "%." << endl;
+
 		PMT = PMTComputation(PV, n, r);
 		cout << "\nThe PMT (fixed installment amount) is: " << PMT << "." << endl;
-		
+
     } else if ( MissingElement == 3 ) {
         cout << "You choose not to insert n, the number of payments.\n";
-        cout << "Please insert PV. \n";
-        cin >> PV;
-        cout << "Please insert PMT.\n";
-        cin >> PMT;
-        cout << "Please insert annual r.\n";
-        cin >> r;
-        r = r / f;
-        cout << "Interest rate for every installment is: " << r << "." << endl;
-		
+        cout << "Please insert PV, the amount of the loan: ";
+        PV = RealInputLowerBound(0);
+        cout << "Please insert PMT, the fixed installed amount: ";
+        PMT = RealInputBounded(0, PV);
+        cout << "Please insert annual r, the interest rate (given in %): ";
+        r = RealInputBounded(0, 100);
+        r = (r/100) / f;
+        cout << "Interest rate for every installment is: " << r*100 << "%." << endl;
+
 		n = NComputation(PV, PMT, r);
 		cout << "\nThe n (number of payments) is: " << n << "." << endl;
-		
+
     } else if ( MissingElement == 4 ) {
         cout << "You choose not to insert r, the fixed interest rate.\n";
-        cout << "Please insert PV. \n";
-        cin >> PV;
-        cout << "Please insert PMT.\n";
-        cin >> PMT;
-        cout << "Please insert n.\n";
-        cin >> n;
-        
+        cout << "Please insert PV, the amount of the loan: ";
+        PV = RealInputLowerBound(0);
+        cout << "Please insert PMT, the fixed installment amount: ";
+        PMT = RealInputBounded(0, PV);
+        cout << "Please insert n, the number of payments: ";
+        n = ChoiceOption(0, 999);
+
         r = InterestComputation(PV, PMT, n);
-        cout << "\nThe r (fixed interest rate for every payment) is: " << r;
-        cout << "\nThe annual fixed interest rate would be: " << r*f << endl;
-        
-    } else {
-        cout << "Please insert a valid input.\n\n";
-        MissingElementFI(i = 1, f);
+        cout << "\nThe r (fixed interest rate for every payment) is: " << r*100 << "%.";
+        cout << "\nThe annual fixed interest rate would be: " << r*f*100 << "%." << endl;
+
     }
-    
+
     data[0] = PV;
 	data[1] = PMT;
     data[2] = n;
     data[3] = r;
-	
+
 	return data;
-    
+
 }
 
 
