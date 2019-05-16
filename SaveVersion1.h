@@ -30,11 +30,11 @@ void SaveVersion1(int start[], int n, double pvb[], double p[], double r, double
 		pmt[i] = roundf(pmt[i] * 100) / 100;
 		pve[i] = roundf(pve[i] * 100) / 100;
 	}
-	
-	
+
+
     ofstream csvFile;
     ofstream outputFile;
-    csvFile.open ("loanschedule1.csv");
+    csvFile.open ("LoanRepaymentSchedule.csv");
 
     //Headlines
     csvFile << "Due date" << sep << "Opening balance" << sep << "Principal" << sep << "Interest rate" << sep << "Interest" << sep << "Instalment" << sep << "Closing Balance\n";
@@ -45,11 +45,11 @@ void SaveVersion1(int start[], int n, double pvb[], double p[], double r, double
     for (int i= 0; i <n; i++) //smaller than n is fine because array starts at 0
     {
         csvFile << start[0] << "/" << start[1] << sep << pvb[i]  << sep << p[i] << sep << r << sep << interest[i] << sep << pmt[i] << sep << pve[i] <<"\n";
-        DateIncreasement(start, f);
+        start = DateIncreasement(start, f);
 
     }
     csvFile.close();
-    cout<<"The csv-file was successfully saved\n";
+    cout<<"The csv-file was successfully saved.";
 }
-    
-#endif    
+
+#endif
