@@ -14,13 +14,13 @@ using namespace std;
 Date 17th April 2019
 CSV Output file 2*/
 
-void SaveVersion2 (int start[],int n,int pvb[], int p[], int m [], int b[], int r[], int interest[], int pmt[], int pve[], int f){
+void SaveVersion2 (int start[],int n, double pvb[], double p, double m, double b[], double interest[], double pmt[], double pve[], int f){
     char sep = ';';
     int i;
 
     ofstream csvFile;
     ofstream outputFile;
-    csvFile.open("loanschedule2.csv");
+    csvFile.open("LoanRepaymentSchedule.csv");
 
     //Headlines
     csvFile << "Due date" << sep << "Opening balance" << sep << "Principal" << sep << "Margin" << sep << "Benchmark"
@@ -31,13 +31,13 @@ void SaveVersion2 (int start[],int n,int pvb[], int p[], int m [], int b[], int 
     //Filling the schedule with data
     for (int i = 0; i < n; i++)
     {
-        csvFile << start[0] << "/" << start[1] << sep << pvb[i] << sep << p[i] << sep << m[i] << sep << b[i] << sep
-                << r[i] << sep << interest[i] << sep << pmt[i] << sep << pve[i] << "\n";
+        csvFile << start[0] << "/" << start[1] << sep << pvb[i] << sep << p << sep << m << sep << b[i] << sep
+                << m+b[i] << sep << interest[i] << sep << pmt[i] << sep << pve[i] << "\n";
         DateIncreasement(start, f);
     }
-    
+
     csvFile.close();
-    cout<<"The csv-file Version 2 was successfully saved\n";
+    cout<<"The csv-file was successfully saved.";
 }
 
 #endif
