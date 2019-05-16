@@ -1,9 +1,6 @@
 #include <iostream>
 #include <cmath>
 
-
-//TEMPORARY: used to display the arrays. (the function setw() )
-#include <iomanip>
 using std::setw;
 
 #include "InputValidation.h"
@@ -69,11 +66,6 @@ int main()
 	p[n-1] = pvb[n-1];
 	pve[n-1] = pvb[n-1] - p[n-1];
 	pmt[n-1] = pvb[n-1] + interest[n-1];
-
-	// THIS PART OF THE CODE IS JUST TO SEE THE TEMPORARY OUTPUT.
-	cout << "\npvb" << setw(13) << "p" << setw(13) << "Interest" << setw(13) << "pmt" << setw(13) << "pve"<<  endl;
-	for ( int i = 0; i<n; i++ )
-		cout << setw(7)<< pvb[i] << setw(13) << p[i] << setw(13) << interest[i] << setw(13) << pmt[i] << setw(13) << pve[i] << endl;
 
 	SaveVersion1(start, n, pvb, p, r, interest, pmt, pve, f);
     }
