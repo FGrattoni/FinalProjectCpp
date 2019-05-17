@@ -33,7 +33,7 @@ void SaveVersion2 (int start[],int n, double pvb[], double p, double m, double b
     }
 
     csvFile.close();
-    cout<<"\n --- The csv-file was successfully saved.\n";
+    cout<<"\n--- The csv-file was successfully saved.\n";
 }
 
 #endif
