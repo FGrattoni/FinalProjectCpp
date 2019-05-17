@@ -17,14 +17,14 @@ int Frequency() {
     int f = ChoiceOption(1,4);
 
     if (f == 1) {
-        cout << "\nYou selected annual repayment rate.\n";
+        cout << "You selected annual repayment rate.\n\n";
     } else if(f == 2) {
-        cout << "\nYou selected semi-annual repayment rates.\n";
+        cout << "You selected semi-annual repayment rates.\n\n";
     } else if(f == 3) {
-        cout << "\nYou selected quarterly repayment rates.\n";
+        cout << "You selected quarterly repayment rates.\n\n";
         f = 4;
     } else if(f == 4) {
-        cout << "\nYou selected monthly repayment rates.\n";
+        cout << "You selected monthly repayment rates.\n\n";
         f = 12;
     } else {
         cout<<"ERROR. Something went wrong, please restart the program.";
