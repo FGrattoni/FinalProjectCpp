@@ -81,14 +81,14 @@ double * MissingElementFI(int i = 0, int f = 1)
     int MissingElement;
     double* data = new double[4];
 
-    cout << "You chose the Fixed Installment case." << endl;
+    cout << "\nYou chose the Fixed Installment case." << endl;
     cout << "In order to compute the payment schedule, the program needs the initial amount of the loan, the fixed installment amount, the number of payments and the interest rate applied to the due amount." << endl;
     cout << "Which one of the four component you don't want to insert manually?" << endl;
     cout << "[1] PV (Opening balance) \n";
     cout << "[2] PMT (Fixed installment amount)\n";
     cout << "[3] n (Number of payments) \n";
     cout << "[4] r (Fixed annual interest rate)\n";
-    cout << "Insert your choice by inserting one of the provided numbers: \n";
+    cout << "Insert your choice by inserting one of the provided numbers: ";
     MissingElement = ChoiceOption(1,4);
 
     if ( MissingElement == 1 )
@@ -98,7 +98,7 @@ double * MissingElementFI(int i = 0, int f = 1)
         PMT = RealInputLowerBound(0);
         cout << "Please insert n, the number of payments: ";
         n = ChoiceOption(1, 999);
-        cout << "Please insert annual r, the interest rate (given in %): ";
+        cout << "Please insert annual r, the yearly interest rate (given in %): ";
         r = RealInputBounded(0, 100);
         r = (r/100) / f;
         cout << "Interest rate for every installment is: " << r*100 << "%." << endl;
@@ -113,7 +113,7 @@ double * MissingElementFI(int i = 0, int f = 1)
         PV = RealInputLowerBound(0);
         cout << "Please insert n, the number of payments: ";
         n = ChoiceOption(0, 999);
-        cout << "Please insert annual r, the interest rate (given in %): ";
+        cout << "Please insert annual r, the yearly interest rate (given in %): ";
         r = RealInputBounded(0, 100);
         r = (r/100) / f;
         cout << "Interest rate for every installment is: " << r*100 << "%." << endl;
@@ -127,7 +127,7 @@ double * MissingElementFI(int i = 0, int f = 1)
         PV = RealInputLowerBound(0);
         cout << "Please insert PMT, the fixed installed amount: ";
         PMT = RealInputBounded(0, PV);
-        cout << "Please insert annual r, the interest rate (given in %): ";
+        cout << "Please insert annual r, the yearly interest rate (given in %): ";
         r = RealInputBounded(0, 100);
         r = (r/100) / f;
         cout << "Interest rate for every installment is: " << r*100 << "%." << endl;
