@@ -10,10 +10,6 @@
 
 using namespace std;
 
-/*Final project: Loan Payment Schedule
-Date 17th April 2019
-CSV Output file 2*/
-
 void SaveVersion2 (int start[],int n, double pvb[], double p, double m, double b[], double interest[], double pmt[], double pve[], int f){
     char sep = ';';
     int i;
@@ -37,7 +33,7 @@ void SaveVersion2 (int start[],int n, double pvb[], double p, double m, double b
     }
 
     csvFile.close();
-    cout<<"The csv-file was successfully saved.";
+    cout<<"\n --- The csv-file was successfully saved.\n";
 }
 
 #endif
