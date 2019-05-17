@@ -22,7 +22,7 @@ int main()
     system("CLS");
     cout << "Welcome in the program to compute loan's repayment schedule." << endl;
     int* start = Start(0);
-    cout << "The selected starting date is: " << start[0] << "/" << start[1] << "\n";
+    cout << "The selected starting date is: " << start[0] << "/" << start[1] << "\n\n";
 
     int f = Frequency();
 
@@ -32,7 +32,7 @@ int main()
     cout << "[1] fixed installments;\n";
     cout << "[2] fixed principal.\n";
     cout << "[3] exit the program.\n";
-    cout << "\nSelect by entering the number corresponding to your choice: ";
+    cout << "Select by entering the number corresponding to your choice: ";
     firstfix = ChoiceOption(1, 3);
 
     switch (firstfix)
