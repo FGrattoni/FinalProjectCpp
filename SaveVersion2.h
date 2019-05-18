@@ -24,7 +24,7 @@ void SaveVersion2 (int start[],int n, double pvb[], double p, double m, double b
     csvFile << "n" << sep << "PV(i-1)" << sep << "P" << sep << "M" << sep << "B" << sep << "r" << sep << "Int" << sep
             << "PMT" << sep << "PV(i)\n";
 
-    //Filling the schedule with data
+    //Inserting data
     for (int i = 0; i < n; i++)
     {
         csvFile << start[0] << "/" << start[1] << sep << pvb[i] << sep << p << sep << m << sep << b[i] << sep
