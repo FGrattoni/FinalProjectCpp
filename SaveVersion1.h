@@ -36,9 +36,9 @@ void SaveVersion1(int start[], int n, double pvb[], double p[], double r, double
     csvFile << "Due date" << sep << "Opening balance" << sep << "Principal" << sep << "Interest rate" << sep << "Interest" << sep << "Instalment" << sep << "Closing Balance\n";
     csvFile << "n" << sep << "PV" << sep << "P" << sep << "r" << sep << "Int" << sep << "PMT" << sep <<"PV\n";
 
-    //Creating a loop that inserts the data
+    //Inserting data
 
-    for (int i= 0; i <n; i++) //smaller than n is fine because array starts at 0
+    for (int i= 0; i <n; i++)
     {
         csvFile << start[0] << "/" << start[1] << sep << pvb[i]  << sep << p[i] << sep << r << sep << interest[i] << sep << pmt[i] << sep << pve[i] <<"\n";
         start = DateIncreasement(start, f);
