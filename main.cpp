@@ -26,7 +26,7 @@ int main()
 
     int f = Frequency();
 
-    //Choosing between the fixed installment and fixed principal case
+    //Choosing between fixed installment or fixed principal case
     int firstFix=0;
     cout << "Which case would you like to consider?\n";
     cout << "[1] fixed installments;\n";
@@ -39,7 +39,7 @@ int main()
     {
         case 1:
         {
-            // FIXED INSTALLMENTs CASE
+            // FIXED INSTALLMENT CASE
             data = MissingElementFI(0, f);
             n = data[2];
             double r = data[3];
