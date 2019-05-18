@@ -81,7 +81,7 @@ double * MissingElementFI(int i = 0, int f = 1)
     int MissingElement;
     double* data = new double[4];
 
-    cout << "\nYou choose the Fixed Installment case." << endl;
+    cout << "\nYou chose the Fixed Installment case." << endl;
     cout << "In order to compute the payment schedule, the program needs the initial amount of the loan, the fixed installment amount, the number of payments and the interest rate applied to the due amount." << endl;
     cout << "Which one of the four component you don't want to insert manually?" << endl;
     cout << "[1] PV (Opening balance) \n";
@@ -93,7 +93,7 @@ double * MissingElementFI(int i = 0, int f = 1)
 
     if ( MissingElement == 1 )
 	{
-        cout << "You choose not to insert PV, the opening balance.\n\n";
+        cout << "You chose not to insert PV, the opening balance.\n\n";
         cout << "Please insert PMT, the installment amount: ";
         PMT = RealInputLowerBound(0);
         cout << "Please insert n, the number of payments: ";
@@ -108,7 +108,7 @@ double * MissingElementFI(int i = 0, int f = 1)
 
     } else if ( MissingElement == 2 )
 	{
-        cout << "You chooe not to insert PMT, the fixed installment amount.\n\n";
+        cout << "You chose not to insert PMT, the fixed installment amount.\n\n";
         cout << "Please insert PV, the amount of the loan: ";
         PV = RealInputLowerBound(0);
         cout << "Please insert n, the number of payments: ";
@@ -122,7 +122,7 @@ double * MissingElementFI(int i = 0, int f = 1)
 		cout << "\nThe PMT (fixed installment amount) is: " << PMT << "." << endl;
 
     } else if ( MissingElement == 3 ) {
-        cout << "You choose not to insert n, the number of payments.\n\n";
+        cout << "You chose not to insert n, the number of payments.\n\n";
         cout << "Please insert PV, the amount of the loan: ";
         PV = RealInputLowerBound(0);
         cout << "Please insert PMT, the fixed installed amount: ";
@@ -136,7 +136,7 @@ double * MissingElementFI(int i = 0, int f = 1)
 		cout << "\nThe n (number of payments) is: " << n << "." << endl;
 
     } else if ( MissingElement == 4 ) {
-        cout << "You choose not to insert r, the fixed interest rate.\n\n";
+        cout << "You chose not to insert r, the fixed interest rate.\n\n";
         cout << "Please insert PV, the amount of the loan: ";
         PV = RealInputLowerBound(0);
         cout << "Please insert PMT, the fixed installment amount: ";
