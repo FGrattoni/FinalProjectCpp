@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// Verifies that the input when choosing an option is valid
+// Verifies the input when choosing an option is valid
 int ChoiceOption(int lbound, int ubound) 
 {
     string x, tempStr = "";
@@ -46,7 +46,7 @@ int ChoiceOption(int lbound, int ubound)
 
 
 
-// verifies that the input is a real number and inside the boundaries
+// verifies the input is a real number and it is inside the boundaries
 double RealInputBounded( double lbound, double ubound ) 
 {
     string x, tempStr = "";
@@ -105,7 +105,7 @@ double RealInputBounded( double lbound, double ubound )
 
 
 
-// verifies that the input is a real number greater than "lbound"
+// verifies the input is a real number greater than "lbound"
 double RealInputLowerBound( double lbound = 0 ) 
 {
     string x, tempStr = "";
